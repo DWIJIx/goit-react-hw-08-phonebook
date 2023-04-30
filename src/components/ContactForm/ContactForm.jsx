@@ -1,9 +1,9 @@
 import React from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { useDispatch } from 'react-redux';
-import { addContact } from '../../redux/operations';
-import { useContacts } from '../../redux/selectors';
+import { useDispatch, useSelector } from 'react-redux';
+import { addContact } from '../../redux/contacts/operations';
+import { selectContacts } from '../../redux/contacts/selectors';
 import {
   FormField,
   Form,
@@ -29,24 +29,25 @@ const ContactFormSchema = Yup.object().shape({
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
-  const contacts = useContacts();
+  const contacts = useSelector(selectContacts);
 
+  const handleSaveContact = (values, actions) => {
+    if (
+      contacts.find(
+        contact => contact.name.toLowerCase() === values.name.toLowerCase()
+      )
+    ) {
+      alert(`${values.name} is already in contacts`);
+    } else {
+      dispatch(addContact(values));
+      actions.resetForm();
+    }
+  };
   return (
     <Formik
       initialValues={{ name: '', number: '' }}
       validationSchema={ContactFormSchema}
-      onSubmit={(values, actions) => {
-        if (
-          contacts.find(
-            contact => contact.name.toLowerCase() === values.name.toLowerCase()
-          )
-        ) {
-          alert(`${values.name} is already in contacts`);
-        } else {
-          dispatch(addContact(values));
-          actions.resetForm();
-        }
-      }}
+      onSubmit={handleSaveContact}
     >
       <Form>
         <FormField>

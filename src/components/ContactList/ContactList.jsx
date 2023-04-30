@@ -1,7 +1,7 @@
-import { useDispatch } from 'react-redux';
-import { deleteContact } from '../../redux/operations';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteContact } from '../../redux/contacts/operations';
 // import { useSelector } from 'react-redux';
-import { useContacts } from 'redux/selectors';
+import { selectVisibleContacts } from 'redux/contacts/selectors';
 import {
   List,
   ContactItem,
@@ -17,14 +17,14 @@ import {
 // };
 
 export const ContactList = () => {
-  const contacts = useContacts();
+  const visibleContacts = useSelector(selectVisibleContacts);
   // const filter = useSelector(selectFilter);
   const dispatch = useDispatch();
   // const visibleContacts = getVisibleContacts(contacts, filter);
   return (
     <section>
       <List>
-        {contacts.map(contact => {
+        {visibleContacts.map(contact => {
           return (
             <li key={contact.id}>
               <ContactItem>

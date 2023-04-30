@@ -1,5 +1,5 @@
 import { createSelector } from '@reduxjs/toolkit';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 
 export const selectisLoadin = state => state.contacts.isLoading;
 export const selectError = state => state.contacts.error;
@@ -15,4 +15,4 @@ export const selectVisibleContacts = createSelector(
   }
 );
 
-export const useContacts = () => useSelector(selectVisibleContacts);
+// export const useContacts = () => useSelector(selectVisibleContacts);
