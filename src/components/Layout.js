@@ -12,32 +12,7 @@ export const Layout = styled.div`
   font-size: 40;
   color: #010101;
 
-  background: #5433ff;
-  background: -webkit-linear-gradient(to right, #a5fecb, #20bdff, #5433ff);
-  background: linear-gradient(to right, #a5fecb, #20bdff, #5433ff);
-
   border-radius: 10px;
-  box-shadow: 25px 31px 40px 26px rgba(28, 28, 25, 0.76);
-  -webkit-box-shadow: 25px 31px 40px 26px rgba(28, 28, 25, 0.76);
-  -moz-box-shadow: 25px 31px 40px 26px rgba(28, 28, 25, 0.76);
-  -webkit-animation: color-change-2x 4s linear infinite alternate-reverse both;
-  animation: color-change-2x 4s linear infinite alternate-reverse both;
-  @-webkit-keyframes color-change-2x {
-    0% {
-      background: #19dcea;
-    }
-    100% {
-      background: #b22cff;
-    }
-  }
-  @keyframes color-change-2x {
-    0% {
-      background: #19dcea;
-    }
-    100% {
-      background: #b22cff;
-    }
-  }
 `;
 
 export const StyledLink = styled(NavLink)`
@@ -48,6 +23,6 @@ export const StyledLink = styled(NavLink)`
   font-weight: 500;
   &.active {
     color: white;
-    background-color: blue;
+    background-color: grey;
   }
 `;
